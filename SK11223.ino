@@ -1063,17 +1063,11 @@ void monitorCycleTest(void) {
         }
         break;
       case 3:       // move up to let ball set in
-        if (myDriveSettings.bot_position < 0){
-          moveTo(myDriveSettings.bot_position+myDriveSettings.steps_per_rev);
+          moveTo(myDriveSettings.bot_position+myDriveSettings.bot_position-myDriveSettings.jog_position);
           sTime = millis();
           myCycleTest.index = 4;
-        }
-        else moveTo(myDriveSettings.bot_position-myDriveSettings.steps_per_rev);
-          sTime = millis();
-          myCycleTest.index = 4;  
-        
       case 4:
-        if (myStepperDrive.currentPosition() == myDriveSettings.bot_position+myDriveSettings.steps_per_rev) {
+        if (myStepperDrive.currentPosition() == myDriveSettings.bot_position+myDriveSettings.bot_position-myDriveSettings.jog_position) {
           myCycleTest.index = 5;
           myCycleTest.move_time = (time_ms / 1000);
           sTime = millis();
