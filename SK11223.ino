@@ -1197,6 +1197,7 @@ void parseCmd() {
   else if (inCmd == "THRE") threshold();
   else if (inCmd == "FORC") loadCellValue();
   else if (inCmd == "FACT") factorValues();
+  else if (inCMd == "HELP") helpSendCommandList();
 }
 
 void stopMotor() {
@@ -1319,4 +1320,21 @@ void factorValues() {
     Serial.print(scale.get_scale());
     Serial.print(" | Offset: ");
     Serial.println(scale.get_offset());
+}
+
+ void helpSendCommandList() {
+  Serial.println('"STOP" will stop the motor');
+  Serial.println('"POSI" will send the motor position');
+  Serial.println('"ENAB" enable the motor');
+  Serial.println('"DISA" disable the motor');
+  Serial.println('"ACCL" set motor acceleration');
+  Serial.println('"SPED" set motor speed');
+  Serial.println('"PSET" reset motor position to zero');
+  Serial.println('"GOTO" go to a specified position');
+  Serial.println('"MOVE" move a specified distance');
+  Serial.println('"CALI" calibrate the load cell');
+  Serial.println('"THRE" set the force threshold');
+  Serial.println('"FORC" read current load cell force value');
+  Serial.println('"FACT" display/set calibration factor values');
+  Serial.println('"HELP" show this command list');
 }
